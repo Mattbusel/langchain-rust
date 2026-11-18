@@ -33,6 +33,11 @@ pub enum LLMError {
     #[error("Bedrock error: {0}")]
     BedrockError(#[from] BedrockError),
 
+    /// A [`BudgetedLLM`](crate::llm::BudgetedLLM) call refused by its
+    /// [`SpendGate`](crate::llm::SpendGate) before it was sent.
+    #[error("Call refused by spend gate: {0}")]
+    SpendRefused(Box<dyn std::error::Error + Send + Sync>),
+
     #[error("Network request failed: {0}")]
     RequestError(#[from] ReqwestError),
 

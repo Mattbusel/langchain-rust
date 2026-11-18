@@ -16,6 +16,9 @@ pub use deepseek::*;
 mod cache;
 pub use cache::{CachedLLM, InMemoryLLMCache, LLMCache};
 
+mod budget;
+pub use budget::{BudgetedLLM, SpendGate, SpendHold};
+
 mod sse;
 
 #[cfg(test)]
